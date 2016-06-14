@@ -1,0 +1,19 @@
+<div class="jumbyotron">
+
+
+
+    <div class="category" ng-repeat="cat in categories">
+        <div class="row">
+            <div class="col-md-3"><h1>{{cat}}</h1></div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-3" ng-repeat="i in itemsByCategory(cat)">
+                <card item="i"></card>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

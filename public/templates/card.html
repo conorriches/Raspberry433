@@ -1,0 +1,7 @@
+<div class="card"
+     ng-click="toggleItemStatus(i)"
+        ng-class="{'active':i.status==1}">
+
+    <h2>{{i.name}}</h2>
+    <a class="btn btn-primary">Turn {{i.status==1?"off":"on"}}</a>
+</div>

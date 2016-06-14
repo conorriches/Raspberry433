@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <meta name="theme-color" content="{{color}}">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+
+    <script src="angular/angular.js"></script>
+    <script src="javascripts/controller.js"></script>
+</head>
+<body ng-app="lightingApp" ng-controller="lightingCtrl">
+<div class="container">
+    <div class="header clearfix">
+        <h3 class="text-muted">433mhz</h3>
+    </div>
+
+    <div class="row menu">
+        <menu-item name="Items"></menu-item>
+        <menu-item name="Rooms"></menu-item>
+        <menu-item name="Channels"></menu-item>
+        <menu-item name="Timers"></menu-item>
+    </div>
+
+
+    <item-list ng-show="menuItem == 'Items'"></item-list>
+    <room-list ng-show="menuItem == 'Rooms'"></room-list>
+    <channel-list ng-show="menuItem == 'Channels'"></channel-list>
+
+</div>
+</body>
+</html>

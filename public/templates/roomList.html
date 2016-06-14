@@ -1,0 +1,19 @@
+<div class="jumbyotron">
+
+
+
+    <div class="category" ng-repeat="room in rooms">
+        <div class="row">
+            <div class="col-md-3"><h1>{{room}}</h1></div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-3" ng-repeat="i in itemsByRoom(room)">
+                <card item="i"></card>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

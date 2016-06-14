@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <meta name="theme-color" content="{{color}}">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+
+    <script src="angular/angular.js"></script>
+    <script src="javascripts/admin.js"></script>
+</head>
+<body ng-app="lightingApp" ng-controller="adminCtrl">
+<div class="container">
+    <div class="header clearfix">
+        <h3 class="text-muted">ADMIN</h3>
+    </div>
+
+    <h1>Items</h1>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Channel</th>
+            <th>Switch</th>
+            <th>Room</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat="item in items">
+            <td><span ng-show="$parent.editItem != item.id">{{item.name}}</span><input type="text"              ng-model="item.name" name="name" ng-show="editItem == item.id"/></td>
+            <td><span ng-show="$parent.editItem != item.id">{{item.channelNo}}</span><input type="number"    ng-model="item.channelNo" name="channelNo" min="1" max="4" ng-show="editItem == item.id"/></td>
+            <td><span ng-show="$parent.editItem != item.id">{{item.switchNo}}</span><input type="number"      ng-model="item.switchNo" name="switchNo" min="1" max="4" ng-show="editItem == item.id"/></td>
+            <td><span ng-show="$parent.editItem != item.id">{{item.room}}</span><input type="text"              ng-model="item.room" name="room" ng-show="editItem == item.id"/></td>
+            <td><span ng-show="$parent.editItem != item.id">{{item.category}}</span><input type="text"          ng-model="item.category" name="category" ng-show="editItem == item.id"/></td>
+            <td>{{item.status ==1?"ON":"OFF"}}</td>
+            <td><a ng-click="$parent.editItem = item.id" ng-show="$parent.editItem != item.id">Edit</a><a ng-click="saveItem(item)" ng-show="$parent.editItem == item.id">Save</a>|<a ng-click="deleteItem(item)">Delete</a></td>
+        </tr>
+
+        <tr style="background:#111">
+            <td><input type="text" ng-model="newItem.name" name="name" placeholder="Name"/></td>
+            <td><input type="number" ng-model="newItem.channelNo" name="channelNo" min="1" max="4"/></td>
+            <td><input type="number" ng-model="newItem.switchNo" name="switchNo" min="1" max="4"/></td>
+            <td><input type="text" ng-model="newItem.room" name="room" placeholder="Room"/></td>
+            <td><input type="text" ng-model="newItem.category" name="category" placeholder="Category"/></td>
+            <td>{{item.status ==1?"ON":"OFF"}}</td>
+            <td>
+                <a ng-click="addItem(newItem)">Add Item</a>
+            </td>
+        </tr>
+    </table>
+
+    <hr/>
+    <h1>Channels</h1>
+
+</div>
+</body>
+</html>
