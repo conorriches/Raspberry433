@@ -1,7 +1,20 @@
 
 var myApp = angular.module('lightingApp',[]);
 
-myApp.controller('lightingCtrl', ['$scope','$http', '$timeout', function($scope, $http, $timeout) {
+myApp.factory('socket', ['$rootScope', function($rootScope) {
+    var socket = io.connect();
+
+    return {
+        on: function(eventName, callback){
+            socket.on(eventName, callback);
+        },
+        emit: function(eventName, data) {
+            socket.emit(eventName, data);
+        }
+    };
+}]);
+
+myApp.controller('lightingCtrl', ['$scope','$http', '$timeout' ,'socket', function($scope, $http, $timeout, socket) {
     $scope.greeting = "hello";
     $scope.menuItem = "Items";
 
@@ -16,6 +29,14 @@ myApp.controller('lightingCtrl', ['$scope','$http', '$timeout', function($scope,
             items:[1,2]
         }
     ];
+
+
+
+    socket.on('news', function (data) {
+        console.log(data);
+        socket.emit('my other event', { my: 'data' });
+    });
+
 
 
     /**
@@ -51,6 +72,7 @@ myApp.controller('lightingCtrl', ['$scope','$http', '$timeout', function($scope,
             data:{status: newStatus}
         }).then(function(response) {
             item.status = newStatus;
+            socket.emit("item-state-changed", item);
         });
 
     };

@@ -20,6 +20,41 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var io = app.io;
+io.attach(server);
+
+
+var allClients = [];
+io.sockets.on('connection', function (socket) {
+  console.log('Client connected on socked ID: ' + socket.id);
+
+  /**
+   * When a client reports a state change
+   */
+  socket.on('item-state-changed', function (location) {
+    console.log("STATE-CHANGE");
+
+    //TODO: update all other clients
+    io.sockets.emit('refresh', "");
+  });
+
+  /**
+   * Client is requesting the playlist
+   */
+  socket.on('request-playlist', function (data) {
+    console.log("###### Playlist Requested");
+    socket.emit("response-playlist","hello");
+  });
+
+  /**
+   * When a projector disconnects, send a broadcast.
+   */
+  socket.on('disconnect', function (e) {
+    io.sockets.emit('disconnect', "");
+  });
+
+});
+
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -28,6 +63,12 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+
+io.on('connection', function (socket) {
+  console.log("www got a connection")
+});
+
 
 /**
  * Normalize a port into a number, string, or false.
