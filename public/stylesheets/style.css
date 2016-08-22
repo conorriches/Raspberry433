@@ -5,23 +5,46 @@ html{
 }
 
 body{
-    color:#FFFF8D;
-    background:#004D40;
-    font-family: 'Bitter'!important; ;
-}
-
-
-.menuItem {
-    border-bottom:2px solid #888;
-}
-
-.menuItem.active h4{
+    font-family: 'Bitter'!important;
     color:white;
+}
+
+
+.menu-item {
+    color:black;
+}
+
+.menuItem p{
+    font-size:22px;
+    color:black;
+    margin:5px 0px 0px 0px;
+}
+.menuItem.active p{
+    color:#009688 !important;
 }
 
 
 .card{
     color:black;
+}
+
+.card .card-content{
+    padding:10px;
+}
+
+.card .card-action{
+    padding:10px;
+}
+
+.card .card-action a{
+    color:black !important;
+}
+
+.card.inactive{
+    color:#aaa;
+}
+.card.inactive .card-action{
+    color:#aaa;
 }
 
 /*

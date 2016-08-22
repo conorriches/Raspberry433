@@ -11,23 +11,41 @@
     <link type="text/css" rel="stylesheet" href="materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
     <link rel="stylesheet" href="stylesheets/style.css">
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="theme-color" content="{{color}}">
+    <meta name="theme-color" content="#009688">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
     <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+
     <script src="angular/angular.js"></script>
     <script src="javascripts/controller.js"></script>
+    <script src="javascripts/jquery.js"></script>
 </head>
-<body ng-app="lightingApp" ng-controller="lightingCtrl">
-<div class="container">
-    <div class="row">
-        <menu-item name="Items"></menu-item>
-        <menu-item name="Rooms"></menu-item>
-        <menu-item name="Channels"></menu-item>
-        <menu-item name="Timers"></menu-item>
+<body ng-app="lightingApp" ng-controller="lightingCtrl" class="grey darken-4">
+
+<nav>
+    <div class="nav-wrapper teal">
+        <a href="#!" class="brand-logo">433mhz</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <menu-item name="Items"></menu-item>
+            <menu-item name="Rooms"></menu-item>
+            <menu-item name="Channels"></menu-item>
+            <menu-item name="Timers"></menu-item>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <menu-item name="Items"></menu-item>
+            <menu-item name="Rooms"></menu-item>
+            <menu-item name="Channels"></menu-item>
+            <menu-item name="Timers"></menu-item>
+        </ul>
     </div>
+</nav>
+
+
+<div class="container">
+
 
 
     <item-list ng-show="menuItem == 'Items'"></item-list>
