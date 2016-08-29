@@ -65,11 +65,12 @@ exports.hotswitch = function(req, res, callback){
                         console.log("SENT");
                         console.log(req.params.channelNo + " " + req.params.switchNo + " " + status);
                         exec("sudo send " + req.params.channelNo + " " + req.params.switchNo + " " + status, puts);
-                        callback("<script>window.close()</script>");
+
                     }
                 );
             });
 
+            callback("<script>window.close()</script>");
 
         }
     );
