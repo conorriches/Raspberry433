@@ -22,11 +22,11 @@
     <script src="javascripts/controller.js"></script>
     <script src="javascripts/jquery.js"></script>
 </head>
-<body ng-app="lightingApp" ng-controller="lightingCtrl" class="grey darken-4">
+<body ng-app="lightingApp" ng-controller="lightingCtrl" class="">
 
 <nav>
-    <div class="nav-wrapper teal">
-        <a href="#!" class="brand-logo">433mhz</a>
+    <div class="nav-wrapper purple">
+        <a href="#!" class="brand-logo center">433mhz</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <menu-item name="Items"></menu-item>
@@ -51,6 +51,7 @@
     <item-list ng-show="menuItem == 'Items'"></item-list>
     <room-list ng-show="menuItem == 'Rooms'"></room-list>
     <channel-list ng-show="menuItem == 'Channels'"></channel-list>
+    <timer-list ng-show="menuItem == 'Timers'"></timer-list>
 
 </div>
 </body>

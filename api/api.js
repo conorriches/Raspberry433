@@ -38,6 +38,26 @@ exports.switch = function(req, res, callback){
     );
 };
 
+/**
+ * Changes the state
+ * @param req
+ * @param res
+ * @param callback
+ */
+exports.hotswitch = function(req, res, callback){
+    var status = req.params.action?1:0;
+
+    db.run(
+        "UPDATE items SET status = ? WHERE channelNo = ? AND switchNo = ?",
+        [status, req.params.channelNo, req.params.switchNo],
+        function(){
+            console.log("SENT");
+            exec("sudo send " + req.params.channelNo + " " + req.params.switchNo + " " + status, puts);
+            callback({status:1});
+        }
+    );
+};
+
 
 /**
  * Updates the DB with the model provided by the client.

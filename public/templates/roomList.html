@@ -4,11 +4,11 @@
 
     <div class="category" ng-repeat="room in rooms">
         <div class="row">
-            <div class="col-md-3"><h1>{{room}}</h1></div>
+            <div class="col s12 m3"><h4>{{room}}</h4></div>
         </div>
         <div class="row">
 
-            <div class="col-md-3" ng-repeat="i in itemsByRoom(room)">
+            <div class="col s12 m3" ng-repeat="i in itemsByRoom(room)">
                 <card item="i"></card>
             </div>
 

@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Bitter');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html{
     overflow-y:scroll;
 }
 
 body{
-    font-family: 'Bitter'!important;
-    color:white;
+    font-family: 'Roboto'!important;
 }
 
 

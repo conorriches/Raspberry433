@@ -2,16 +2,18 @@
 
 
 
-    <div class="category" ng-repeat="cat in categories">
-        <div class="row">
-            <div class="col s12 "><h4>{{cat}}</h4></div>
-        </div>
-        <div class="row">
-
-            <div class="col s12 m3" ng-repeat="i in itemsByCategory(cat)">
-                <card item="i"></card>
+    <div class="category card brown lighten-5" ng-repeat="cat in categories">
+        <div class="card-content">
+            <div class="row">
+                <div class="col s12 "><h4>{{cat}}</h4></div>
             </div>
+            <div class="row">
 
+                <div class="col s12 m3" ng-repeat="i in itemsByCategory(cat)">
+                    <card item="i"></card>
+                </div>
+
+            </div>
         </div>
     </div>
 

@@ -1,15 +1,15 @@
-<div class="card"
-     ng-click="toggleItemStatus(i)"
-     ng-class="{
-        'blue-grey lighten-4 active':i.status==1,
-        'blue-grey darken-4 inactive' :i.status!=1
-     }">
+<div class="card black-text"
+     ng-click="toggleItemStatus(i)">
     <div class="card-content">
         <span class="card-title">{{i.name}}</span>
     </div>
 
-    <div class="card-action">
+    <div class="card-action"
+         ng-class="{
+        'green lighten-3 active':i.status==1,
+        'red lighten-3 inactive' :i.status!=1
+     }"
+            >
         <a href="#">Turn {{i.status==1?"off":"on"}}</a>
-        <a href="#">Link</a>
     </div>
 </div>

@@ -130,6 +130,12 @@ myApp.directive('channelList', function() {
     };
 });
 
+myApp.directive('timerList', function() {
+    return {
+        restrict: 'E',
+        templateUrl: '/templates/timerList.html'
+    };
+});
 
 
 myApp.directive('card', function() {

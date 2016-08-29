@@ -1,7 +1,6 @@
-<li>
-<a class="menuItem"
-     ng-class="{'active':$parent.menuItem == name}"
-     ng-click="$parent.menuItem = name">
-    <p class="menu-item">{{name}}</p>
+<li ng-class="{'active':$parent.menuItem == name}"
+    ng-click="$parent.menuItem = name">
+<a class="menuItem" >
+    {{name}}
 </a>
 </li>
