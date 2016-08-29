@@ -45,13 +45,15 @@ exports.switch = function(req, res, callback){
  * @param callback
  */
 exports.hotswitch = function(req, res, callback){
-    var status = req.params.action?1:0;
+
+    var status = (req.params.action == 1)?1:0;
 
     db.run(
         "UPDATE items SET status = ? WHERE channelNo = ? AND switchNo = ?",
         [status, req.params.channelNo, req.params.switchNo],
         function(){
             console.log("SENT");
+            console.log(req.params.channelNo + " " + req.params.switchNo + " " + status);
             exec("sudo send " + req.params.channelNo + " " + req.params.switchNo + " " + status, puts);
             callback({status:1});
         }
