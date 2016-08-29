@@ -48,7 +48,31 @@ exports.hotswitch = function(req, res, callback){
 
     var status = (req.params.action == 1)?1:0;
 
-    db.run(
+
+    db.each(
+        "SELECT status FROM items WHERE channelNo = ? AND switchNo = ?",
+        [ req.params.channelNo, req.params.switchNo],
+        function(e,r){
+            console.log("Current status is " + r.status);
+            var status = (r.status ==1)? 0:1;
+            console.log("New status is " + status);
+
+            db.run(
+                 "UPDATE items SET status = ? WHERE channelNo = ? AND switchNo = ?",
+                 [status, req.params.channelNo, req.params.switchNo],
+                 function(){
+                     console.log("SENT");
+                     console.log(req.params.channelNo + " " + req.params.switchNo + " " + status);
+                     exec("sudo send " + req.params.channelNo + " " + req.params.switchNo + " " + status, puts);
+                     callback({status:1});
+                 }
+            );
+
+        }
+    );
+
+
+   /* db.run(
         "UPDATE items SET status = ? WHERE channelNo = ? AND switchNo = ?",
         [status, req.params.channelNo, req.params.switchNo],
         function(){
@@ -57,7 +81,7 @@ exports.hotswitch = function(req, res, callback){
             exec("sudo send " + req.params.channelNo + " " + req.params.switchNo + " " + status, puts);
             callback({status:1});
         }
-    );
+    );*/
 };
 
 

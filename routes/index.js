@@ -61,7 +61,7 @@ module.exports = function(io){
     });
 
 
-    router.get('/api/hotswitch/:channelNo/:switchNo/:action', function (req, res, next) {
+    router.get('/api/hotswitch/:channelNo/:switchNo/', function (req, res, next) {
 
         api.hotswitch(req, res, function (response) {
             res.send(response)
