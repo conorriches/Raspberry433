@@ -18,25 +18,20 @@ myApp.controller('lightingCtrl', ['$scope','$http', '$timeout' ,'socket', functi
     $scope.greeting = "hello";
     $scope.menuItem = "Items";
 
-    //List of items
+    //List of items, categories, rooms, channels.
     $scope.items = [];
     $scope.categories = [];
     $scope.rooms = [];
-
-    $scope.channels = [
-        {
-            name:"Test",
-            items:[1,2]
-        }
-    ];
+    $scope.channels = [];
 
 
-
-    socket.on('news', function (data) {
-        console.log(data);
-        socket.emit('my other event', { my: 'data' });
+    /**
+     * When notified that clients are to update status, call init function
+     */
+    socket.on('clientDoStateUpdate', function (data) {
+        console.info("Update request received by controller.js");
+        $scope.init();
     });
-
 
 
     /**
@@ -44,6 +39,7 @@ myApp.controller('lightingCtrl', ['$scope','$http', '$timeout' ,'socket', functi
      * Pull in data from the DB
      */
     $scope.init = function(){
+        console.info("Initialising app");
         $scope.editingItem = -1;
         $http({
             method: 'GET',

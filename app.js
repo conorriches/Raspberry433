@@ -10,11 +10,11 @@ var io = socket_io();
 
 
 var routes = require('./routes/index')(io);
+var itemRoute = require('./routes/item')(io);
+var timerRoute = require('./routes/timer')(io);
+
 var app = express();
 app.io = io;
-
-
-
 
 
 // view engine setup
@@ -30,6 +30,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
+
+
+app.use('/api/timer', timerRoute);
+app.use('/api', itemRoute);
 app.use('/', routes);
 
 // catch 404 and forward to error handler

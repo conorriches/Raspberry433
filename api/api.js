@@ -1,5 +1,5 @@
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('db');
+var db = new sqlite3.Database('db.db');
 // or more concisely
 var sys = require('sys');
 var exec = require('child_process').exec;
@@ -172,3 +172,9 @@ exports.deleteItem = function(req, res, callback) {
 
 };
 
+/**
+ * Updates all clients with new data.
+ */
+function sendUpdate(){
+
+}
