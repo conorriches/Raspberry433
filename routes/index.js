@@ -9,9 +9,14 @@ module.exports = function(io){
         res.render('index', {title: 'Express'});
     });
 
-    /* GET home page. */
+    /* GET admin page. */
     router.get('/admin', function (req, res, next) {
         res.render('admin', {title: 'Express'});
+    });
+
+    /* GET pilot page. */
+    router.get('/pilot', function (req, res, next) {
+        res.render('pilot', {title: 'Express'});
     });
 
 

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+
+    <meta name="theme-color" content="#6c7c7c">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <script src="/socket.io-client/socket.io.js"></script>
+
+    <script src="angular/angular.js"></script>
+    <script src="javascripts/controller.js"></script>
+</head>
+<body ng-app="lightingApp" ng-controller="lightingCtrl" class="">
+    <div class="container">
+        <h4 style="text-align: center; color:#89c403;">Home Control</h4>
+    </div>
+
+
+    <div class="container main">
+
+        <div class="row">
+            <div class="col-md-12" ng-repeat="i in items">
+                <card item="i"></card>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
