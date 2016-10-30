@@ -1,15 +1,9 @@
-<div class="card black-text"
+<div class="card"
+     ng-class="{
+        'active':i.status==1,
+        'inactive' :i.status!=1
+        }"
      ng-click="toggleItemStatus(i)">
-    <div class="card-content">
-        <span class="card-title">{{i.name}}</span>
-    </div>
-
-    <div class="card-action"
-         ng-class="{
-        'green lighten-3 active':i.status==1,
-        'red lighten-3 inactive' :i.status!=1
-     }"
-            >
-        <a href="#">Turn {{i.status==1?"off":"on"}}</a>
-    </div>
+        <span ng-hide="i.pending" class="itemName">{{i.name}}</span>
+        <div ng-show="i.pending" class="loader">...</div>
 </div>

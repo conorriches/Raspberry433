@@ -8,14 +8,11 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
     <link rel="stylesheet" href="stylesheets/style.css">
 
-    <meta name="theme-color" content="#efebe9">
+    <meta name="theme-color" content="#6c7c7c">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-
     <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
 
     <script src="angular/angular.js"></script>
@@ -24,35 +21,21 @@
 </head>
 <body ng-app="lightingApp" ng-controller="lightingCtrl" class="">
 
-<nav>
-    <div class="nav-wrapper purple">
-        <a href="#!" class="brand-logo center">433mhz</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-            <menu-item name="Items"></menu-item>
-            <menu-item name="Rooms"></menu-item>
-            <menu-item name="Channels"></menu-item>
-            <menu-item name="Timers"></menu-item>
-        </ul>
-        <ul class="side-nav" id="mobile-demo">
+    <div class="navbar">
+        <ul class="nav-menu">
             <menu-item name="Items"></menu-item>
             <menu-item name="Rooms"></menu-item>
             <menu-item name="Channels"></menu-item>
             <menu-item name="Timers"></menu-item>
         </ul>
     </div>
-</nav>
 
+    <div class="container">
+        <item-list ng-show="menuItem == 'Items'"></item-list>
+        <room-list ng-show="menuItem == 'Rooms'"></room-list>
+        <channel-list ng-show="menuItem == 'Channels'"></channel-list>
+        <timer-list ng-show="menuItem == 'Timers'"></timer-list>
+    </div>
 
-<div class="container">
-
-
-
-    <item-list ng-show="menuItem == 'Items'"></item-list>
-    <room-list ng-show="menuItem == 'Rooms'"></room-list>
-    <channel-list ng-show="menuItem == 'Channels'"></channel-list>
-    <timer-list ng-show="menuItem == 'Timers'"></timer-list>
-
-</div>
 </body>
 </html>

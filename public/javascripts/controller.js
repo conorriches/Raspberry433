@@ -62,6 +62,7 @@ myApp.controller('lightingCtrl', ['$scope','$http', '$timeout' ,'socket', functi
     $scope.toggleItemStatus = function(item){
 
         var newStatus = (item.status == 0)? 1 : 0;
+        item.pending=true;
         $http({
             method: 'POST',
             url: '/api/switch/' + item.channelNo + '/' + item.switchNo,
