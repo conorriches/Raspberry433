@@ -1,7 +1,7 @@
 <li ng-class="{'active':$parent.menuItem == name}"
-    ng-click="$parent.menuItem = name"
+    ng-click="$parent.setMenuItem(name)"
     class="menuList">
 <a class="menuItem" >
-    {{name}}
+    {{name | capitalize}}
 </a>
 </li>

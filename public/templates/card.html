@@ -1,7 +1,8 @@
 <div class="card"
      ng-class="{
         'active':i.status==1,
-        'inactive' :i.status!=1
+        'inactive' :i.status!=1,
+        'disabled': disabled
         }"
      ng-click="toggleItemStatus(i)">
         <span ng-hide="i.pending" class="itemName">{{i.name}}</span>

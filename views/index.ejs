@@ -6,8 +6,8 @@
     <!-- Material Design fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
-
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="stylesheets/style.css">
 
     <meta name="theme-color" content="#6c7c7c">
@@ -19,20 +19,24 @@
 </head>
 <body ng-app="lightingApp" ng-controller="lightingCtrl" class="">
 
-    <div class="navbar">
-        <ul class="nav-menu">
-            <menu-item name="Items"></menu-item>
-            <menu-item name="Rooms"></menu-item>
-            <menu-item name="Channels"></menu-item>
-            <menu-item name="Timers"></menu-item>
-        </ul>
+    <div class="container">
+        <div class="navbar">
+            <ul class="nav-menu">
+                <menu-item  ng-repeat="tab in tabs" name="{{tab}}"></menu-item>
+            </ul>
+        </div>
     </div>
 
-    <div class="container">
-        <item-list ng-show="menuItem == 'Items'"></item-list>
-        <room-list ng-show="menuItem == 'Rooms'"></room-list>
-        <channel-list ng-show="menuItem == 'Channels'"></channel-list>
-        <timer-list ng-show="menuItem == 'Timers'"></timer-list>
+    <div class="container main">
+        <div class="row">
+            <div class="col-xs-12">
+                <item-list ng-show="menuItem == 'items'"></item-list>
+                <room-list ng-show="menuItem == 'rooms'"></room-list>
+                <channel-list ng-show="menuItem == 'channels'"></channel-list>
+                <timer-list ng-show="menuItem == 'timers'"></timer-list>
+            </div>
+        </div>
+
     </div>
 
 </body>

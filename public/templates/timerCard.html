@@ -1,0 +1,73 @@
+<div class="timerCard">
+    <div class="row">
+        <div class="col-xs-5">
+            <h5>Name</h5>
+        </div>
+        <div class="col-xs-7">
+            <h4>{{i.name}}</h4>
+            <input type="text" ng-show="i.editing"/>
+        </div>
+    </div>
+    <div class="row dayList">
+        <div class="col-xs-5">
+            <h5>Days</h5>
+        </div>
+        <div class="col-xs-1">
+            <input type="checkbox" class="filled-in" id="newTimer-day-mon" checked="checked" ng-show="i.editing"/>
+            <label for="newTimer-day-mon" ng-class="{'active':i.monday}">M</label>
+        </div>
+        <div class="col-xs-1">
+            <input type="checkbox" class="filled-in" id="newTimer-day-tue" checked="checked" ng-show="i.editing"/>
+            <label for="newTimer-day-tue" ng-class="{'active':i.tuesday}">T</label>
+        </div>
+        <div class="col-xs-1">
+            <input type="checkbox" class="filled-in" id="newTimer-day-wed" checked="checked" ng-show="i.editing"/>
+            <label for="newTimer-day-wed" ng-class="{'active':i.wednesday}">W</label>
+        </div>
+        <div class="col-xs-1">
+            <input type="checkbox" class="filled-in" id="newTimer-day-thu" checked="checked" ng-show="i.editing"/>
+            <label for="newTimer-day-thu" ng-class="{'active':i.thursday}">T</label>
+        </div>
+        <div class="col-xs-1">
+            <input type="checkbox" class="filled-in" id="newTimer-day-fri" checked="checked" ng-show="i.editing"/>
+            <label for="newTimer-day-fri" ng-class="{'active':i.friday}">F</label>
+        </div>
+        <div class="col-xs-1">
+            <input type="checkbox" class="filled-in" id="newTimer-day-sat" checked="checked" ng-show="i.editing"/>
+            <label for="newTimer-day-sat" ng-class="{'active':i.saturday}">S</label>
+        </div>
+        <div class="col-xs-1">
+            <input type="checkbox" class="filled-in" id="newTimer-day-sun" checked="checked" ng-show="i.editing"/>
+            <label for="newTimer-day-sun" ng-class="{'active':i.sunday}">S</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-5">
+            <h5>Time</h5>
+        </div>
+        <div class="col-xs-2">
+            <h4 ng-show="!i.editing">{{i.hours}}h</h4>
+            <input type="text" ng-show="i.editing"/>
+        </div>
+        <div class="col-xs-2">
+            <h4 ng-show="!i.editing">{{i.minutes}}m</h4>
+            <input type="text" ng-show="i.editing"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-5"><h5>Actions</h5></div>
+        <div class="col-md-7">
+            <ul>
+            <li ng-repeat="act in i.actions">
+                <ul>
+                <li ng-repeat="socket in getItemBySocket(act.channel, act.socket)">
+                {{socket.name}} - {{act.action==1?"on":"off"}}
+                </li>
+                </ul>
+            </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

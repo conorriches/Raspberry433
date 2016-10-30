@@ -12,6 +12,8 @@ body{
 
 .navbar{
     width:100%;
+    margin-bottom:0px;
+    padding-bottom:0px;
 }
 .navbar ul {
     list-style-type: none;
@@ -27,10 +29,19 @@ body{
     float:left;
 }
 
-.container{
-    border-top:1px solid black;
-    background:#eaefea;
-    padding:10px;
+.navbar a{
+    color:white;
+}
+
+.main{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#45484d+0,000000+100;Black+3D+%231 */
+    background: #45484d; /* Old browsers */
+    background: -moz-linear-gradient(top,  #45484d 0%, #000000 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #45484d 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #45484d 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+    color:white;
+    padding-top:20px;
 }
 
 
@@ -74,17 +85,8 @@ body{
     background-color:#89c403;
 }
 
-
-
-
-.container{
-    float:left;
-    width:100%;
-}
-
 .category{
-    float:left;
-    width:100%;
+    margin-bottom:20px;
 }
 
 .card{
@@ -94,14 +96,13 @@ body{
     display:inline-block;
     cursor:pointer;
     float:left;
-    width:100px;
-    height:35px;
+    width:100%;
+    height:45px;
     color:#ffffff;
     font-size:15px;
     position:relative;
     font-weight:bold;
     padding:10px 20px;
-    margin: 3px 5px;
     text-decoration:none;
     text-shadow:0px -1px 0px #2b665e;
     -moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
@@ -131,12 +132,28 @@ body{
     background-color:#89c403;
 }
 
-.card.pending{
-    color:red;
+
+.card.disabled{
 }
 
 
+.timerCard{
+    border:1px solid black;
+}
 
+.timerCard .dayList label{
+    text-align: center;
+    width:30px;
+    height:30px;
+    background:#aaa;
+    border-radius:30px;
+}
+
+.timerCard .dayList label.active{
+    background:#00C853;
+}
+
+/* ===== LOADER ===== */
 .loader,
 .loader:before,
 .loader:after {
@@ -151,11 +168,7 @@ body{
 .loader {
     color: #ffffff;
     font-size: 10px;
-    margin: 0px auto;
-    position: absolute;
-    top:-5px;
-    left:58px;
-    float:left;
+    margin: -25px auto;
     text-indent: -9999em;
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
@@ -197,3 +210,13 @@ body{
         box-shadow: 0 2.5em 0 0;
     }
 }
+
+.adminTable{
+    border:1px solid black;
+}
+
+table tr:first-child{
+    background:#2b2d2f;
+    color:white;
+}
+.adminTable

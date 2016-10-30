@@ -14,16 +14,42 @@ myApp.factory('socket', ['$rootScope', function($rootScope) {
     };
 }]);
 
-myApp.controller('lightingCtrl', ['$scope','$http', '$timeout' ,'socket', function($scope, $http, $timeout, socket) {
-    $scope.greeting = "hello";
-    $scope.menuItem = "Items";
+myApp.controller('lightingCtrl', ['$scope','$http', '$timeout' ,'socket' , '$location', function($scope, $http, $timeout, socket, $location) {
+    $scope.menuItem = "items";
 
     //List of items, categories, rooms, channels.
     $scope.items = [];
     $scope.categories = [];
     $scope.rooms = [];
     $scope.channels = [];
+    $scope.disabled = false;
 
+    $scope.tabs = [
+        "items",
+        "rooms",
+        "channels",
+        "timers"
+    ];
+
+    $scope.timers = [
+        {
+            'name':'Test',
+            'status':1,
+            'monday':0,
+            'tuesday':0,
+            'wednesday':0,
+            'thursday':0,
+            'friday':0,
+            'saturday':1,
+            'sunday':0,
+            'hours':10,
+            'minutes':0,
+            'actions':[
+                {'channel':1,'socket':1,'action':1},
+                {'channel':1,'socket':2,'action':0}
+            ]
+        }
+    ];
 
     /**
      * When notified that clients are to update status, call init function
@@ -40,7 +66,16 @@ myApp.controller('lightingCtrl', ['$scope','$http', '$timeout' ,'socket', functi
      */
     $scope.init = function(){
         console.info("Initialising app");
-        $scope.editingItem = -1;
+        $scope.disabled = false;
+
+        var urlLoc = $location.path();
+        var urlStrippedLoc = urlLoc.replace("/", '').toLowerCase();
+
+        if($scope.tabs.indexOf(urlStrippedLoc.toLowerCase()) > -1){
+            console.log("Setting tab")
+            $scope.menuItem = urlStrippedLoc;
+        }
+
         $http({
             method: 'GET',
             url: '/api/list'
@@ -59,18 +94,29 @@ myApp.controller('lightingCtrl', ['$scope','$http', '$timeout' ,'socket', functi
     $scope.init();
 
 
-    $scope.toggleItemStatus = function(item){
+    $scope.setMenuItem = function(name){
+        $scope.menuItem = name;
+    };
 
-        var newStatus = (item.status == 0)? 1 : 0;
-        item.pending=true;
-        $http({
-            method: 'POST',
-            url: '/api/switch/' + item.channelNo + '/' + item.switchNo,
-            data:{status: newStatus}
-        }).then(function(response) {
-            item.status = newStatus;
-            socket.emit("item-state-changed", item);
-        });
+    $scope.toggleItemStatus = function(item){
+        if($scope.disabled) {
+            navigator.vibrate([300]);
+        }else{
+            $scope.disabled = true;
+            navigator.vibrate([50]);
+            var newStatus = (item.status == 0)? 1 : 0;
+            item.pending=true;
+
+            $http({
+                method: 'POST',
+                url: '/api/switch/' + item.channelNo + '/' + item.switchNo,
+                data:{status: newStatus}
+            }).then(function(response) {
+                item.status = newStatus;
+                socket.emit("item-state-changed", item);
+            });
+        }
+
 
     };
 
@@ -95,6 +141,22 @@ myApp.controller('lightingCtrl', ['$scope','$http', '$timeout' ,'socket', functi
         $scope.items.forEach(function(i){
             if(i.room == room) toReturn.push(i);
         });
+        return toReturn;
+    }
+
+    /**
+     * Given a channel and a socket, returns the item as an array of objects
+     * @param ch
+     * @param so
+     */
+    $scope.getItemBySocket = function(ch,so){
+
+        var toReturn = [];
+        $scope.items.forEach(function(item){
+            if(item.channelNo == ch && item.switchNo == so){
+                toReturn.push(item);
+            }
+        })
         return toReturn;
     }
 
@@ -143,6 +205,13 @@ myApp.directive('card', function() {
 });
 
 
+myApp.directive('timerCard', function() {
+    return {
+        restrict: 'E',
+        templateUrl: '/templates/timerCard.html'
+    };
+});
+
 myApp.directive('menuItem', function() {
     return {
         templateUrl: '/templates/menuItem.html',
@@ -158,3 +227,9 @@ myApp.directive('menuItem', function() {
 });
 
 
+
+myApp.filter('capitalize', function() {
+    return function(input) {
+        return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+});
