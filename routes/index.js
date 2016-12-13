@@ -22,11 +22,18 @@ module.exports = function(io){
 
 
     router.get('/internet/on', function (req, res, next) {
-       res.send(api.internetOn());
+
+       api.internetOn(function(response){
+           res.send(response);
+       });
+
     });
 
     router.get('/internet/off', function (req, res, next) {
-        res.send(api.internetOff());
+
+        api.internetOff(function(response){
+            res.send(response);
+        });
     });
 
 
