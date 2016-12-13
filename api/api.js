@@ -172,6 +172,21 @@ exports.deleteItem = function(req, res, callback) {
 
 };
 
+
+exports.internetOff = function(req, res, callback) {
+    exec("sudo internet 0", puts);
+    callback({status:1});
+
+};
+
+
+exports.internetOn = function(req, res, callback) {
+    exec("sudo internet 1", puts);
+    callback({status:1});
+
+};
+
+
 /**
  * Updates all clients with new data.
  */

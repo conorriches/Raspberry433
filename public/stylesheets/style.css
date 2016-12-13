@@ -10,6 +10,18 @@ body{
     background:black;
 }
 
+input{
+    color:black;
+    font-size:16px;
+    border:1px solid green;
+    border-radius:3px;
+    padding:5px;
+}
+
+input.input-small{
+    width:70px;
+}
+
 .navbar{
     width:100%;
     margin-bottom:0px;
@@ -138,7 +150,7 @@ body{
 
 
 .timerCard{
-    border:1px solid black;
+    padding:10px;
 }
 
 .timerCard .dayList label{
@@ -147,11 +159,26 @@ body{
     height:30px;
     background:#aaa;
     border-radius:30px;
+    line-height:30px;
 }
 
 .timerCard .dayList label.active{
     background:#00C853;
 }
+
+
+.itemAction{
+    margin-right:10px;
+    float:left;
+    border-left:3px solid red;
+    padding:5px;
+    background:#333;
+}
+
+.itemAction.on{
+    border-left:3px solid green;
+}
+
 
 /* ===== LOADER ===== */
 .loader,

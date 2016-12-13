@@ -158,9 +158,14 @@ myApp.controller('lightingCtrl', ['$scope','$http', '$timeout' ,'socket' , '$loc
             }
         })
         return toReturn;
-    }
+    };
 
 
+    $scope.addItemToTimer = function (channel, socket, action) {
+        console.log(channel);
+        console.log(socket);
+        console.log(action);
+    };
 
 }]);
 
