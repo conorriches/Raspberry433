@@ -173,14 +173,14 @@ exports.deleteItem = function(req, res, callback) {
 
 
 exports.internetOff = function(req, res, callback) {
-    exec("sudo internet 0", puts);
+    exec("internetOff.sh", puts);
     callback({status:1});
 
 };
 
 
 exports.internetOn = function(req, res, callback) {
-    exec("sudo internet 1", puts);
+    exec("internetOn.sh", puts);
     callback({status:1});
 
 };
