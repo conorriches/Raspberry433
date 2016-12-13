@@ -23,7 +23,7 @@ module.exports = function(io){
 
     router.get('/internet/on', function (req, res, next) {
 
-       api.internetOn(function(response){
+       api.internetOn(req,req,function(response){
            res.send(response);
        });
 
@@ -31,7 +31,7 @@ module.exports = function(io){
 
     router.get('/internet/off', function (req, res, next) {
 
-        api.internetOff(function(response){
+        api.internetOff(res,req,function(response){
             res.send(response);
         });
     });
