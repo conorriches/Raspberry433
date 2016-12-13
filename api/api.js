@@ -1,7 +1,6 @@
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('db.db');
-// or more concisely
-var sys = require('sys');
+var sys = require('util');
 var exec = require('child_process').exec;
 function puts(error, stdout, stderr) { sys.puts(stdout) }
 
